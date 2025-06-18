@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,6 +7,9 @@ import HabitCard from '@/components/HabitCard';
 import HabitForm from '@/components/HabitForm';
 import Analytics from '@/components/Analytics';
 import AIInsights from '@/components/AIInsights';
+import MotivationalQuotes from '@/components/MotivationalQuotes';
+import RewardSystem from '@/components/RewardSystem';
+import Reminders from '@/components/Reminders';
 import { useToast } from '@/hooks/use-toast';
 
 export interface Habit {
@@ -155,13 +157,17 @@ const Index = () => {
         </div>
 
         <Tabs defaultValue="habits" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 lg:w-[400px]">
+          <TabsList className="grid w-full grid-cols-5 lg:w-[600px]">
             <TabsTrigger value="habits">My Habits</TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
             <TabsTrigger value="insights">AI Insights</TabsTrigger>
+            <TabsTrigger value="rewards">Rewards</TabsTrigger>
+            <TabsTrigger value="reminders">Reminders</TabsTrigger>
           </TabsList>
 
           <TabsContent value="habits" className="space-y-6">
+            <MotivationalQuotes />
+            
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-semibold text-gray-800">Today's Habits</h2>
               <Button
@@ -215,6 +221,14 @@ const Index = () => {
 
           <TabsContent value="insights">
             <AIInsights habits={habits} />
+          </TabsContent>
+
+          <TabsContent value="rewards">
+            <RewardSystem habits={habits} />
+          </TabsContent>
+
+          <TabsContent value="reminders">
+            <Reminders habits={habits} />
           </TabsContent>
         </Tabs>
 
